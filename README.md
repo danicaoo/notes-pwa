@@ -16,10 +16,11 @@ LocalStorage
 
 1. Клонируйте репозиторий
 
-bash
-Copy
+```bash
+
 git clone https://github.com/ваш-username/notes-pwa.git
 cd notes-pwa
+```
 2. Запустите приложение
 
 Выберите один из вариантов:
@@ -30,11 +31,10 @@ cd notes-pwa
 Нажмите "Go Live" в правом нижнем углу
 🔹 С помощью Python
 
-bash
-Copy
+```bash
 python3 -m http.server 8000
 Откройте в браузере: http://localhost:8000
-
+```
 🛠 Технологии
 
 mermaid
@@ -63,8 +63,8 @@ Copy
 
 Добавление заметки
 
-javascript
-'''function addNote(text) {
+```javascript
+function addNote(text) {
   const newNote = {
     id: Date.now(),
     text: text,
@@ -74,11 +74,12 @@ javascript
   let notes = getNotes();
   notes.unshift(newNote);
   saveNotes(notes);
-}'''
+}
+```
+
 Редактирование заметки
 
-javascript
-Copy
+```javascript
 function saveEditedNote(id) {
   const notes = getNotes();
   const noteIndex = notes.findIndex(note => note.id === id);
@@ -90,12 +91,12 @@ function saveEditedNote(id) {
     saveNotes(notes);
   }
 }
+```
 🌐 PWA Конфигурация
 
 manifest.json
 
-json
-Copy
+```json
 {
   "name": "Офлайн Заметки",
   "short_name": "Заметки",
@@ -104,13 +105,15 @@ Copy
   "theme_color": "#4a8af4",
   "background_color": "#ffffff"
 }
+```
+
 Service Worker
 
-javascript
-Copy
+```javascript
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then(response => response || fetch(event.request))
   );
 });
+```
